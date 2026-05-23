@@ -1,0 +1,27 @@
+# Özel ve Geçici Proje Dosyaları
+commit_message.txt
+CUSTOM_UAV_PROJECT.docx
+lazimolcak
+
+# IDE ve Editörler (VS Code vb.)
+.vscode/
+*.swp
+*.swo
+
+# Python Önbellek Dosyaları
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ROS 2 / C++ Derleme Çıktıları
+build/
+install/
+log/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+# İşletim Sistemi Dosyaları
+.DS_Store
+Thumbs.db

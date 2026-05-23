@@ -1,0 +1,11 @@
+cat << 'EOF' > lidar_bridge.yaml
+- topic_name: "/world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "gz.msgs.LaserScan"
+  direction: GZ_TO_ROS
+
+- topic_name: "/world/default/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+EOF
