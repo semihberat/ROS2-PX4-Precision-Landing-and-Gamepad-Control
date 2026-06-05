@@ -182,23 +182,23 @@ void UAV::listen_c_points(const CPoints::SharedPtr msg)
 		return;
 	}
 
-	float error_x = static_cast<float>(msg->box_cx - msg->cx);
-	float error_y = static_cast<float>(msg->box_cy - msg->cy);
+	double error_x = msg->box_cx - msg->cx;
+	double error_y = msg->box_cy - msg->cy;
 
-	pid_y.setSetpoint(static_cast<float>(msg->cy));
-	pid_x.setSetpoint(static_cast<float>(msg->cx));
+	pid_y.setSetpoint(msg->cy);
+	pid_x.setSetpoint(msg->cx);
 
 	// 1. Image Y (Dikey) Eksen -> Drone X (İleri/Geri) Ekseni
 	// Aruco kamerada merkezden aşağıdaysa (box_cy > cy) geri gelmeli. PID (cy - box_cy)'den negatif çıkmalıdır.
 	// Bu nedenle direkt hesaplanan değer Drone Vx değeridir.
-	x = pid_y.update(static_cast<float>(msg->box_cy));
+	x = pid_y.update(msg->box_cy);
 
 	// 2. Image X (Yatay) Eksen -> Drone Y (Sağ/Sol) Ekseni
 	// Aruco kamerada sağdaysa (box_cx > cx) sağa gitmeli (Vy pozitif olmalı).
 	// PID (cx - box_cx)'den negatif çıktığı için eksi (-) ile çarparak Drone'un Sağa (Pozitif Vy) yönelmesi sağlanır.
-	y = -pid_x.update(static_cast<float>(msg->box_cx));
+	y = -pid_x.update(msg->box_cx);
 
-	if (std::sqrt(error_x * error_x + error_y * error_y) < 0.01f)
+	if (std::sqrt(error_x * error_x + error_y * error_y) < 0.01)
 		z = 0.5f;
 
 	RCLCPP_INFO(this->get_logger(), " %.2f, %.2f", error_x, error_y);

@@ -58,8 +58,8 @@ private:
 	void listen_c_points(const CPoints::SharedPtr msg);
 	void timer_callback();
 
-	PID pid_x{0.9f, 0.0f, 0.25f, 0.1f, 0.0f, 2.0f};
-	PID pid_y{0.9f, 0.0f, 0.25f, 0.1f, 0.0f, 2.0f};
+	PID<double> pid_x{0.9, 0.0, 0.25, 0.1, 0.0, 2.0};
+	PID<double> pid_y{0.9, 0.0, 0.25, 0.1, 0.0, 2.0};
 	bool aruco_flag = false;
 	struct Velocity
 	{
@@ -70,9 +70,9 @@ private:
 	} velocity_;
 
 	CPoints::SharedPtr c_points_msg_;
-	float x = 0.0f;
-	float y = 0.0f;
-	float z = 0.0f;
+	double x = 0.0f;
+	double y = 0.0f;
+	double z = 0.0f;
 
 	float yaw = 0.0;
 	Joy::SharedPtr joy_msg_;
