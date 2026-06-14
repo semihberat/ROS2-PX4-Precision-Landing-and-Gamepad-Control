@@ -50,7 +50,7 @@ class Camera(Node):
     self.width, self.height = 1, 1 # Prevent division by zero
     self.subscription = self.create_subscription(
       Image, 
-      f'/world/aruco/model/x500_mono_cam_down_0/link/camera_link/sensor/camera/image', 
+      f'/camera', 
       self.listener_callback, 
       10)
     self.publisher_ = self.create_publisher(CPoints, '/aruco_center', 10)

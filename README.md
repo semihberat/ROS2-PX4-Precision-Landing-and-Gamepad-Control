@@ -50,7 +50,7 @@ UAV çalışma alanının (workspace) root klasöründe paketleri derleyin:
 
 ```bash
 cd ~/uav_control
-colcon build --symlink-install
+colcon build 
 source install/setup.bash
 ```
 

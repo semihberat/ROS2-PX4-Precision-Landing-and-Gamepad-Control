@@ -58,6 +58,11 @@ install(DIRECTORY include/ DESTINATION include/)
 # Install launch files.
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
 
+# Install resources (rviz config, etc.)
+install(DIRECTORY resources DESTINATION share/${PROJECT_NAME}/)
+
+
+
 ###########
 # Python ##
 ###########
@@ -68,6 +73,7 @@ ament_python_install_package(${PROJECT_NAME})
 # Install Python executables
 install(PROGRAMS
   scripts/camera.py
+  scripts/visualizer.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

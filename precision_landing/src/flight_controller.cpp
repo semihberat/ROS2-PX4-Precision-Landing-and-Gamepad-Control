@@ -188,14 +188,7 @@ void UAV::listen_c_points(const CPoints::SharedPtr msg)
 	pid_y.setSetpoint(msg->cy);
 	pid_x.setSetpoint(msg->cx);
 
-	// 1. Image Y (Dikey) Eksen -> Drone X (İleri/Geri) Ekseni
-	// Aruco kamerada merkezden aşağıdaysa (box_cy > cy) geri gelmeli. PID (cy - box_cy)'den negatif çıkmalıdır.
-	// Bu nedenle direkt hesaplanan değer Drone Vx değeridir.
 	x = pid_y.update(msg->box_cy);
-
-	// 2. Image X (Yatay) Eksen -> Drone Y (Sağ/Sol) Ekseni
-	// Aruco kamerada sağdaysa (box_cx > cx) sağa gitmeli (Vy pozitif olmalı).
-	// PID (cx - box_cx)'den negatif çıktığı için eksi (-) ile çarparak Drone'un Sağa (Pozitif Vy) yönelmesi sağlanır.
 	y = -pid_x.update(msg->box_cx);
 
 	if (std::sqrt(error_x * error_x + error_y * error_y) < 0.01)
