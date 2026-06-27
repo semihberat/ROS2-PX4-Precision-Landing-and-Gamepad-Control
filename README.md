@@ -89,4 +89,21 @@ ros2 run ros_gz_bridge parameter_bridge "/world/aruco/model/x500_mono_cam_down_0
 ```bash
 ros2 run precision_landing camera.py
 ```
+
+ros2 run ros_gz_bridge parameter_bridge /clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock
+
+ros2 run ros_gz_bridge parameter_bridge /world/aruco/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan --ros-args -r /world/aruco/model/x500_lidar_2d_0/link/link/sensor/lidar_2d_v2/scan:=/scan
+
+ros2 run tf2_ros static_transform_publisher \
+  --x -0.1 --y 0 --z 0.26 \
+  --qx 0 --qy 0 --qz 0 --qw 1 \
+  --frame-id base_link \
+  --child-frame-id link
+ros2 param set /ros_gz_bridge use_sim_time true
+
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true
+
+ros2 launch precision_landing visualize.launch.py
+
+
 *(ArUco işaretçisi algılandığında merkez koordinatları hesaplanır ve kontrolcüye gönderilir).*
