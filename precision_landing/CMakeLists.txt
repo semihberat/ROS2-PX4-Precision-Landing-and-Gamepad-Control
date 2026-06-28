@@ -61,6 +61,8 @@ install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
 # Install resources (rviz config, etc.)
 install(DIRECTORY resources DESTINATION share/${PROJECT_NAME}/)
 
+install(DIRECTORY models DESTINATION share/${PROJECT_NAME}/)
+
 
 
 ###########
