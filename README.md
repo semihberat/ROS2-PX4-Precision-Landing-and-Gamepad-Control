@@ -3,6 +3,10 @@
 
 This project aims to achieve offboard control of an Unmanned Aerial Vehicle (UAV) and enable autonomous "Precision Landing" using camera-based image processing within the Gazebo (GZ) simulation environment, leveraging the ROS 2 (Robot Operating System 2) and PX4 Autopilot infrastructure. The project integrates image processing, LiDAR mapping, and semi-autonomous remote control within an "all-in-one drone" framework. It is released as open source to support academic research.
 
+https://github.com/user-attachments/assets/aad15fb6-172c-4d53-b813-a1f12501f69a
+
+[Screencast from 06-22-2026 02:16:12 AM.webm](https://github.com/user-attachments/assets/f09a53f8-146c-4637-9fd2-8c7dc7859817)
+
 ## Tools Used
 - ros_gz_bridge
 - tf2
